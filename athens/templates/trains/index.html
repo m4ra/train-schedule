@@ -1,0 +1,15 @@
+<p>The time is now {{time}}</p>
+
+{% if timetables %}
+
+ <ul>
+	 {%for timetable in timetables %}
+	 <li><a>{{timetable.station}}</a>
+	  {% if time > timetable.min1 %} {{timetable.min1}} {%else%}{{timetable.min2}}{%endif%}
+
+	  </li>
+	  {% endfor%}
+{%endif%}
+{{title}}
+{{summary}}
+{{feed}}
