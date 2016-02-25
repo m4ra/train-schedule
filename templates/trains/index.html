@@ -5,8 +5,9 @@
 {% block content %}
 
 <div class="container">
-    <h2>The time is now {{time}}</h2>
-
+    <h2>Local time in Athens is {{time}}</h2>
+    <p></p>
+    <h4>Select a station to check the next train to airport</h4>
     <div class="dropdown">
       <form id="station" class="st-search" action="{% url 'index'%}" method="post"> {% csrf_token %}
 	<p><select id="stations"  name="q">
