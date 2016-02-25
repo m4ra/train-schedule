@@ -35,9 +35,9 @@ def index(request):
         min_everymin = min(int(cur_station.everymin1), int(cur_station.everymin2))
         max_everymin = max(int(cur_station.everymin1), int(cur_station.everymin2))
         min_everyminNext = min(int(next_station.everymin1), int(next_station.everymin2))
-        max_everyminNext = max(int(cur_station.everymin1), int(next_station.everymin2))
+        max_everyminNext = max(int(next_station.everymin1), int(next_station.everymin2))
         min_everyminPrev = min(int(prev_station.everymin1), int(prev_station.everymin2))
-        max_everyminPrev = max(int(cur_station.everymin1), int(prev_station.everymin2))
+        max_everyminPrev = max(int(prev_station.everymin1), int(prev_station.everymin2))
         
         #get train times when current time is within the stations' time
         train_pass1 = datetime.time(cur_hour, min_everymin)
