@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='timetable',
             name='duration',
-            field=models.CharField(blank=True, max_length=200, verbose_name='travel duration'),
+            field=models.TextField(blank=True, max_length=200, verbose_name='travel duration'),
         ),
         migrations.AddField(
             model_name='timetable',
@@ -68,12 +68,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='timetable',
             name='everymin1',
-            field=models.CharField(blank=True, max_length=200, verbose_name='second train'),
+            field=models.TextField(blank=True, max_length=200, verbose_name='second train'),
         ),
         migrations.AddField(
             model_name='timetable',
             name='everymin2',
-            field=models.CharField(blank=True, max_length=200, verbose_name='second train'),
+            field=models.TextField(blank=True, max_length=200, verbose_name='second train'),
         ),
         migrations.RunPython(forwards_func, reverse_func),
     ]

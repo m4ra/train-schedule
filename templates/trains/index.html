@@ -24,26 +24,12 @@
     <div class="results">
     {% if station %}
 	<p>Next trains to the airport from </p>
-	<p>{% if prev_station %}{{prev_station}}
-	    {% if time.hour < 5 %} {{next_hourTrainPrev}}
-	    {% elif time > train_prev1 and time < train_prev2 %} {{train_prev2}} 
-	    {% elif time > train_prev2 %} {{next_hourTrainPrev}}
-	    {%else%} {{train_prev1}} {%endif%}
-	{%endif%}</p>
+	<p>{% if prev_station %}{{prev_station}} {{train_prev}}{%else%}NO previous station{%endif%}</p>
 
-	<p>{{station}}
-	    {% if time.hour < 5 %} {{next_hourTrain}}
-	    {% elif time > train_pass1 and time < train_pass2 %} {{train_pass2}} 
-	    {% elif time > train_pass2 %} {{next_hourTrain}} 
-	    {%else%} {{train_pass1}}{%endif%}
+	<p>{{station}} {{train_now}}
 	</p>
 
-	<p>{% if next_station %}{{next_station}}
-	    {% if time.hour < 5 %} {{next_hourTrainNext}}
-	    {% elif time > train_next1 and time < train_next2 %} {{train_next2}} 
-	    {% elif time > train_next2 %} {{next_hourTrainNext}}
-	    {%else%} {{train_next1}}{%endif%}
-	{%endif%}</p>
+	<p>{% if next_station %}{{next_station}} {{train_next}}{%else%}NO next station{%endif%}</p>
     {%endif%}
 
     </div>
