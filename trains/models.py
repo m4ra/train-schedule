@@ -17,24 +17,21 @@ class Timetable(models.Model):
     duration = models.TextField(_('travel duration'), max_length=200, blank=True)
 
     def train_per_hour(self):
-        self.trains_now = {} 
         m1=getattr(self, 'everymin1')
         m2=getattr(self, 'everymin2')
         lastm=getattr(self, 'last_train')
         curtime = datetime.datetime.now().time()
         curhr = curtime.hour
         first_train = datetime.time(curhr, min(int(m1), int(m2)))
-        self.trains_now['first_train'] = first_train
         sec_train = datetime.time(curhr, max(int(m1), int(m2)))
-        self.trains_now['sec_train'] = sec_train
         nexthrTr =  datetime.time(curhr+1, min(int(m1), int(m2)))
-        firstdayTr =  datetime.datetime.strptime(getattr(self, 'first_train'), "%H:%M").time()
-        lastdayTr =  datetime.datetime.strptime(getattr(self, 'last_train'), "%H:%M").time()
-        if curtime > lastdayTr and curtime < firstdayTr:
-            firstdayTr
+        firstday_train =  datetime.datetime.strptime(getattr(self, 'first_train'), "%H:%M").time()
+        lastday_train =  datetime.datetime.strptime(getattr(self, 'last_train'), "%H:%M").time()
+        if curtime > lastday_train and curtime < firstday_train:
+            return firstday_train
         elif curtime > first_train and curtime < sec_train:
             return sec_train
-        elif curtime > sec_train and curtime < lastdayTr:
+        elif curtime > sec_train and curtime < lastday_train:
             return nexthrTr
         else:
             return first_train
